@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Letter</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url("image/rr.jpg");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.love-symbol {
+  position: absolute;
+  font-size: 40px;
+  color: red;
+  opacity: 0.8;
+  animation: float-love 4s infinite ease-in-out;
+}
+
+@keyframes float-love {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.envelope-container {
+  position: relative;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+img {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: none;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+#heart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 60px;
+  color: red;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+}
+
+#click-message {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  font-size: 14px;
+  color: black;
+  display: none; /* Initially hidden */
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('path/to/Gotham-Regular.ttf') format('truetype');
+}
+
+#message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  display: none;
+  animation: slide-up 0.5s ease forwards;
+  z-index: 1;
+  font-family: 'gotham', iatalic;
+  font-size: 20px;
+  color: black;
+  line-height: 1.6;
+  text-align: center;
+}
+
+#message p {
+  margin: 15px 0;
+}
+
+.message-line {
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+.message-heart {
+  color: #ff4d4d;
+}
+
+.message-emoji {
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+.message-signature {
+  font-style: times new roman;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="envelope-container" id="envelope-container">
+  <img src="image/ammuu2.png" alt="Love Letter" id="love-symbol">
+</div>
+
+<div id="message">
+  <p class="message-line">Na Bangaru thalli,</p>
+  <p>I just wanted to let you know how much you mean to me<span class="message-emoji">🌍💯</span>. You fill my days with joy and my heart with love. I cherish every moment we spend together and look forward to many more<span class="message-emoji">🧿</span>. Nuvvu na bangaram nanna, eppatiki manam ilaaney vundaali ammuu. Ilaaney godava padaali kottukovali 😅 kani end of the day iddaram okati avvali nanna<span class="message-emoji">💯🥺</span>. Okati gurthu pettuko Ammuu lekapothey kannaya ledu<span class="message-emoji">💯💯💯💯💯💯</span>. Nannu na cheyyi ni eppatiki vadhalaku ammuu.<span class="message-emoji">🥺🥺🥺</span></p>
+  <p>With all my love,</p>
+  <p class="message-signature">Your Hubby</p>
+</div>
+
+<div id="heart" onclick="navigateToAnotherPage()">❤️</div>
+<div id="click-message">Click here</div>
+
+<audio id="bgMusic" loop>
+  <source src="image/finalrr.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+var loveSymbol = document.getElementById("love-symbol");
+var message = document.getElementById("message");
+var bgMusic = document.getElementById("bgMusic");
+var heart = document.getElementById("heart");
+var clickMessage = document.getElementById("click-message");
+
+loveSymbol.addEventListener("click", function() {
+  toggleMessage();
+});
+
+function toggleMessage() {
+  var envelopeContainer = document.getElementById("envelope-container");
+
+  var computedStyle = window.getComputedStyle(message);
+  if (computedStyle.getPropertyValue("display") === "none") {
+    var img = envelopeContainer.querySelector("img");
+    img.style.transform = "scale(1.1) rotate(5deg)";
+    setTimeout(() => {
+      img.style.transform = "scale(1)";
+      message.style.display = "block";
+      envelopeContainer.style.display = "none";
+      bgMusic.play();
+      animateLoveSymbols();
+    }, 200);
+  } else {
+    message.style.display = "none";
+    envelopeContainer.style.display = "block";
+    bgMusic.pause();
+  }
+}
+
+function animateLoveSymbols() {
+  var loveSymbols = ["❤️", "💖", "💕", "💘", "💓"];
+  setInterval(function() {
+    var loveSymbol = document.createElement("div");
+    loveSymbol.textContent = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+    loveSymbol.classList.add("love-symbol");
+    loveSymbol.style.left = Math.random() * window.innerWidth + "px";
+    loveSymbol.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(loveSymbol);
+    setTimeout(function() {
+      loveSymbol.remove();
+    }, 4000);
+  }, 1000);
+}
+
+// Manually show heart symbol and click message after song completes
+setTimeout(function() {
+  heart.style.display = "block";
+  clickMessage.style.display = "block";
+}, 40000); // Adjust the time according to the duration of your song
+
+// Function to navigate to another page
+function navigateToAnotherPage() {
+  window.location.href = "final.html"; // Replace with the actual path to another page
+}
+</script>
+
+</body>
+</html>

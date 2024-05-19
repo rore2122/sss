@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.background-images {
+  position: fixed;
+  top: 0;
+  width: 50%; /* Divide the viewport into two halves */
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s; /* Smooth transition */
+}
+
+.left-image {
+  left: 0;
+}
+
+.right-image {
+  right: 0;
+}
+
+#birthday-wishes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+
+.hug-emoji {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  z-index: 1; /* Ensure hug emoji appears above background images */
+}
+</style>
+</head>
+<body>
+
+<!-- Background images -->
+<img src="image2/final1.jpg" class="background-images left-image">
+<img src="image2/final2.jpg" class="background-images right-image">
+
+<div id="birthday-wishes">
+  <h1>Happy Happy Happiest Birthday Na bujji puppy!</h1>
+  <p>Mana iddaram kalisi ilaaney chaaala birthdays chesukovali❤️🧑🏽‍❤️‍👩🌍🧿♾️💯💯💯</p>
+</div>
+
+<!-- Add hug emoji -->
+<img id="hug-emoji" src="image2/hug .png" class="hug-emoji" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onclick="revealBirthdayWishes()">
+
+<script>
+function revealBirthdayWishes() {
+  var birthdayWishes = document.getElementById("birthday-wishes");
+  var backgroundImages = document.querySelectorAll(".background-images");
+  var hugEmoji = document.getElementById("hug-emoji");
+  backgroundImages.forEach(function(image) {
+    image.style.opacity = "1"; // Display both background images
+  });
+  birthdayWishes.style.display = "block"; // Show birthday wishes message
+  hugEmoji.style.display = "none"; // Hide hug emoji
+}
+</script>
+
+</body>
+</html>

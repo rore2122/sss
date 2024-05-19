@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playful Puppies</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3498db, #e74c3c, #27ae60, #f39c12);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: #fff;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #ccc;
+            text-align: center;
+        }
+
+        .search-button {
+            background-color: #fff;
+            color: #3498db;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .search-button:hover {
+            background-color: #ecf0f1;
+        }
+
+        .puppy-emojis {
+            font-size: 3rem;
+            cursor: pointer;
+            user-select: none; /* Prevent text selection on puppy emojis */
+            animation: bounce 1s infinite; /* Add bounce animation */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .custom-cursor {
+            width: 40px;
+            height: 40px;
+            background: url('paw-cursor.png') center/cover no-repeat;
+            position: absolute;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            animation: cursorAnimate 1s infinite alternate;
+        }
+
+        @keyframes cursorAnimate {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <h1>Welcome to See My Puppy, My World!</h1>
+    <p class="puppy-emojis">🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</p>
+    <a href="newhtml.html" class="search-button">Take Me to the Puppy Paradise</a>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.custom-cursor');
+            cursor.style.top = e.pageY + 'px';
+            cursor.style.left = e.pageX + 'px';
+        });
+    </script>
+</body>
+</html>
